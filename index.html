@@ -11,13 +11,23 @@
       box-sizing:border-box;
     }
 
+    :root{
+      --azul-1:#0d2446;
+      --azul-2:#12396b;
+      --azul-3:#102b51;
+      --naranja:#ff8d24;
+      --naranja-suave:#ffd08a;
+      --texto:#eef4ff;
+      --blanco:rgba(255,255,255,0.96);
+    }
+
     body{
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       min-height:100vh;
       background:
         radial-gradient(circle at top left, rgba(255,140,43,0.20), transparent 25%),
         radial-gradient(circle at top right, rgba(20,76,145,0.20), transparent 30%),
-        linear-gradient(135deg, #0d2446 0%, #12396b 50%, #102b51 100%);
+        linear-gradient(135deg, var(--azul-1) 0%, var(--azul-2) 50%, var(--azul-3) 100%);
       color:#fff;
       overflow-x:hidden;
       position:relative;
@@ -64,13 +74,13 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:36px 18px 90px;
+      padding:32px 16px 100px;
     }
 
     .card{
-      width:min(1150px, 96%);
+      width:min(1150px, 100%);
       display:grid;
-      grid-template-columns: 1fr 1.15fr;
+      grid-template-columns: 1fr 1.1fr;
       background:rgba(255,255,255,0.08);
       border:1px solid rgba(255,255,255,0.16);
       border-radius:30px;
@@ -81,17 +91,17 @@
 
     .left{
       position:relative;
-      min-height:690px;
+      min-height:680px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:20px;
+      padding:24px;
       background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       overflow:hidden;
     }
 
     .right{
-      padding:56px 50px;
+      padding:54px 48px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -101,6 +111,7 @@
     .badge{
       display:inline-block;
       width:max-content;
+      max-width:100%;
       padding:10px 18px;
       border-radius:999px;
       background:rgba(255,255,255,0.12);
@@ -111,7 +122,7 @@
     }
 
     h1{
-      font-size:clamp(2.1rem, 4vw, 4rem);
+      font-size:clamp(2rem, 4vw, 4rem);
       line-height:1.08;
       font-weight:800;
     }
@@ -125,13 +136,13 @@
       width:92px;
       height:5px;
       border-radius:999px;
-      background:linear-gradient(90deg, #ff8d24, #ffd08a);
+      background:linear-gradient(90deg, var(--naranja), var(--naranja-suave));
     }
 
     .message{
-      font-size:1.07rem;
+      font-size:1.05rem;
       line-height:1.9;
-      color:#eef4ff;
+      color:var(--texto);
       text-align:justify;
     }
 
@@ -159,6 +170,7 @@
     .footer-note{
       font-size:0.96rem;
       color:#d6e4ff;
+      line-height:1.7;
     }
 
     .bottom-banner{
@@ -175,11 +187,13 @@
       box-shadow:0 10px 24px rgba(0,0,0,0.20);
       font-size:0.96rem;
       text-align:center;
+      width:auto;
+      max-width:calc(100% - 24px);
     }
 
     .foxter-wrap{
       position:relative;
-      width:420px;
+      width:min(100%, 430px);
       min-height:620px;
       display:flex;
       align-items:flex-end;
@@ -207,10 +221,10 @@
 
     .speech{
       position:absolute;
-      top:40px;
-      left:18px;
-      max-width:230px;
-      background:rgba(255,255,255,0.96);
+      top:34px;
+      left:0;
+      max-width:240px;
+      background:var(--blanco);
       color:#163d72;
       padding:16px 18px;
       border-radius:22px;
@@ -229,7 +243,7 @@
       bottom:-12px;
       width:22px;
       height:22px;
-      background:rgba(255,255,255,0.96);
+      background:var(--blanco);
       transform:rotate(45deg);
     }
 
@@ -241,60 +255,138 @@
     .foxter-image{
       position:relative;
       z-index:3;
-      width:100%;
-      max-width:370px;
+      width:min(100%, 380px);
       height:auto;
       object-fit:contain;
       filter:drop-shadow(0 18px 30px rgba(0,0,0,0.30));
     }
 
-    @media (max-width: 960px){
+    @media (max-width: 1024px){
       .card{
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .left{
-        min-height:620px;
+        min-height:600px;
       }
 
       .right{
-        padding:38px 24px 40px;
+        padding:40px 28px 42px;
       }
 
       .foxter-wrap{
-        transform:scale(0.90);
+        min-height:560px;
       }
     }
 
-    @media (max-width: 560px){
+    @media (max-width: 768px){
+      .container{
+        padding:18px 12px 90px;
+      }
+
+      .card{
+        border-radius:24px;
+      }
+
       .left{
-        min-height:540px;
+        min-height:500px;
+        padding:20px 12px 10px;
+      }
+
+      .right{
+        padding:28px 18px 32px;
+        gap:18px;
+      }
+
+      .badge{
+        font-size:0.86rem;
+        padding:9px 14px;
+      }
+
+      h1{
+        font-size:clamp(1.8rem, 8vw, 2.8rem);
+      }
+
+      .message{
+        font-size:0.98rem;
+        line-height:1.8;
+        text-align:left;
+      }
+
+      .signature{
+        padding:18px 16px;
       }
 
       .foxter-wrap{
         width:100%;
-        min-height:500px;
-        transform:scale(0.85);
+        min-height:470px;
+      }
+
+      .foxter-glow{
+        top:90px;
+        width:240px;
+        height:240px;
+      }
+
+      .foxter-image{
+        width:min(100%, 290px);
       }
 
       .speech{
-        left:8px;
-        top:26px;
-        max-width:190px;
+        top:4px;
+        left:50%;
+        transform:translateX(-50%);
+        max-width:220px;
+        text-align:center;
         font-size:0.92rem;
+        padding:14px 16px;
       }
 
-      .right{
-        padding:30px 18px 34px;
-      }
-
-      .message{
-        font-size:1rem;
+      .speech::after{
+        left:50%;
+        transform:translateX(-50%) rotate(45deg);
       }
 
       .bottom-banner{
-        width:92%;
+        font-size:0.88rem;
+        padding:10px 16px;
+        border-radius:18px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .left{
+        min-height:420px;
+      }
+
+      .foxter-wrap{
+        min-height:390px;
+      }
+
+      .foxter-image{
+        width:min(100%, 240px);
+      }
+
+      .speech{
+        max-width:190px;
+        font-size:0.84rem;
+        top:0;
+      }
+
+      .right{
+        padding:24px 16px 28px;
+      }
+
+      .message{
+        font-size:0.95rem;
+      }
+
+      .footer-note{
         font-size:0.90rem;
+      }
+
+      .bottom-banner{
+        width:calc(100% - 20px);
       }
     }
   </style>
@@ -328,17 +420,11 @@
         <div class="line"></div>
 
         <p class="message">
-          En nombre del <strong>Centro de Estudiantes de Ingeniería Empresarial</strong>,
-          expresamos nuestro más profundo agradecimiento al <strong>Mgr. Herbas</strong>
-          por todo el apoyo, la predisposición y el compromiso brindado a nuestra carrera.
-          Su respaldo ha sido fundamental para seguir fortaleciendo el crecimiento de Ingeniería Empresarial
-          y para motivar a nuestra comunidad estudiantil a continuar trabajando con visión, unidad y excelencia.
+          En nombre del <strong>Centro de Estudiantes de Ingeniería Empresarial</strong>, expresamos nuestro más profundo agradecimiento al <strong>Mgr. Herbas</strong> por todo el apoyo, la predisposición y el compromiso brindado a nuestra carrera. Su respaldo ha sido fundamental para seguir fortaleciendo el crecimiento de Ingeniería Empresarial y para motivar a nuestra comunidad estudiantil a continuar trabajando con visión, unidad y excelencia.
         </p>
 
         <p class="message">
-          Gracias por creer en nuestra carrera, por acompañar nuestras iniciativas
-          y por contribuir de manera significativa al desarrollo de nuestros estudiantes.
-          Su apoyo deja una huella valiosa en cada avance alcanzado.
+          Gracias por creer en nuestra carrera, por acompañar nuestras iniciativas y por contribuir de manera significativa al desarrollo de nuestros estudiantes. Su apoyo deja una huella valiosa en cada avance alcanzado.
         </p>
 
         <div class="signature">
